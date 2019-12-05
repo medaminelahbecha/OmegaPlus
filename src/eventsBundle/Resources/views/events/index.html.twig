@@ -1,0 +1,63 @@
+{% extends 'index3.html.twig' %}
+
+{% block events %}
+    <body style="background-color:#580000">
+    <center>
+    <h1>Events list</h1>
+    </center>
+    <table>
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            th, td {
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {background-color: #f2f2f2;}
+        </style>
+        <thead>
+            <tr>
+                <th>Idevent</th>
+                <th>Nomevent</th>
+                <th>Localisationevent</th>
+                <th>Prixevent</th>
+                <th>Dateevent</th>
+                <th>Placedispo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for event in events %}
+            <tr>
+                <td><a href="{{ path('events_show', { 'idEvent': event.idEvent }) }}">{{ event.idEvent }}</a></td>
+                <td>{{ event.nomEvent }}</td>
+                <td>{{ event.localisationEvent }}</td>
+                <td>{{ event.prixEvent }}</td>
+                <td>{% if event.dateEvent %}{{ event.dateEvent|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ event.placeDispo }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('events_show', { 'idEvent': event.idEvent }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('events_edit', { 'idEvent': event.idEvent }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('events_new') }}">Create a new event</a>
+        </li>
+    </ul>
+    </body>
+{% endblock %}

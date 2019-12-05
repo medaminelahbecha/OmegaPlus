@@ -1,0 +1,24 @@
+emprunts_index:
+    path:     /
+    defaults: { _controller: "BibliothequeBundle:emprunts:index" }
+    methods:  GET
+
+emprunts_show:
+    path:     /{id}/show
+    defaults: { _controller: "BibliothequeBundle:emprunts:show" }
+    methods:  GET
+
+emprunts_new:
+    path:     /new
+    defaults: { _controller: "BibliothequeBundle:emprunts:new" }
+    methods:  [GET, POST]
+
+emprunts_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BibliothequeBundle:emprunts:edit" }
+    methods:  [GET, POST]
+
+emprunts_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BibliothequeBundle:emprunts:delete" }
+    methods:  DELETE

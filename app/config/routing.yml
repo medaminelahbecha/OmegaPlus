@@ -1,0 +1,19 @@
+bibliotheque:
+    resource: "@BibliothequeBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
+events:
+    resource: "@eventsBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+easy_admin_bundle:
+    resource: "@EasyAdminBundle/Controller/"
+    type: annotation
+    prefix: /easyadmin

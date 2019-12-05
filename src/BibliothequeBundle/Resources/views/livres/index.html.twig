@@ -1,0 +1,77 @@
+{% extends 'index3.html.twig' %}
+
+{% block events %}
+    <h1>Livres list</h1>
+    <script src="{{ asset('js2/jquery.min.js') }}"></script>
+    <input type="text" id="search" placeholder="CHERCHER LIVRES ...">
+
+    <table class="table table-bordered table-striped" cellspacing="0" id="tableac" border="2">
+        <thead>
+            <tr>
+
+                <th>Nomlivre</th>
+                <th>Auteurlivre</th>
+                <th>Etatlivre</th>
+                <th>Domainelivre</th>
+                <th>Nombreexemplaire</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for livre in livres %}
+            <tr>
+
+                <td>{{ livre.nomLivre }}</td>
+                <td>{{ livre.auteurLivre }}</td>
+                <td>{{ livre.etatLivre }}</td>
+                <td>{{ livre.domaineLivre }}</td>
+                <td>{{ livre.nombreexemplaire }}</td>
+                <td>
+
+                            <a class="btn btn-dark" href="{{ path('livres_show', { 'idLivre': livre.idLivre }) }}">show</a>
+
+                </td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <a class="btn btn-dark" href="{{ path('emprunts_new') }}"> créer un emprunt</a>
+    <a class="btn btn-dark" href="{{ path('emprunts_index') }}">My list of emprunts</a>
+
+
+    <script>
+        $(document).ready(function(){
+            $('#search').keyup(function(){
+                search_table($(this).val());
+            });
+            function search_table(value){
+                $('#tableac tbody tr').each(function(){
+                    var found = 'false';
+                    $(this).each(function(){
+                        if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                        {
+                            found = 'true';
+                        }
+                    });
+                    if(found == 'true')
+                    {
+                        $(this).show();
+
+                    }
+                    else
+                    {
+                        $(this).hide();
+
+
+
+                    }
+                });
+            }
+        });
+    </script>
+
+
+
+{% endblock %}

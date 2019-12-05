@@ -1,0 +1,23 @@
+{% extends 'index3.html.twig' %}
+
+{% block events %}
+    <h1>Emprunt creation</h1>
+
+ <a>
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input class="btn btn-dark"  type="submit" value="Create" />
+    {{ form_end(form) }}
+
+ </a>
+
+            <a class="btn btn-dark" href="{{ path('emprunts_index') }}">Back to the list</a>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+
+        <div class="alert alert-success">
+            {{ flashMessage }}
+        </div>
+
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'index3.html.twig' %}
+
+{% block events  %}
+    <h1>Emprunts list </h1>
+    <script src="{{ asset('js2/jquery.min.js') }}"></script>
+    <input type="text" id="search" placeholder="CHERCHER EMPRUNT ...">
+    <table class="table table-bordered table-striped" cellspacing="0" id="tableac" border="2">        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Datedebut</th>
+                <th>Datefin</th>
+                <th>user</th>
+                <th>livres</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for emprunt in emprunts %}
+            <tr>
+                <td><a class="btn btn-dark" href="{{ path('emprunts_show', { 'idem': emprunt.idem }) }}">{{ emprunt.idem }}</a></td>
+                <td>{% if emprunt.dateDebut %}{{ emprunt.dateDebut|date('Y-m-d') }}{% endif %}</td>
+
+                <td>{% if emprunt.dateFin  %}{{ emprunt.dateFin|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ emprunt.FosUser }}</td>
+                <td>{{ emprunt.Livres }}</td>
+
+
+                <td>
+
+                            <a class="btn btn-dark" href="{{ path('emprunts_show', { 'idem': emprunt.idem }) }}">show</a>
+                            <a class="btn btn-dark" href="{{ path('pdf', { 'idem': emprunt.idem }) }}">recu en PDF</a>
+                            <a class="btn btn-dark" href="{{ path('emprunts_edit', { 'idem': emprunt.idem }) }}">edit</a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+            <a class="btn btn-dark" href="{{ path('emprunts_new') }}">Create a new emprunt</a>
+    <script>
+        $(document).ready(function(){
+            $('#search').keyup(function(){
+                search_table($(this).val());
+            });
+            function search_table(value){
+                $('#tableac tbody tr').each(function(){
+                    var found = 'false';
+                    $(this).each(function(){
+                        if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                        {
+                            found = 'true';
+                        }
+                    });
+                    if(found == 'true')
+                    {
+                        $(this).show();
+
+                    }
+                    else
+                    {
+                        $(this).hide();
+
+
+
+                    }
+                });
+            }
+        });
+    </script>
+
+
+
+{% endblock %}

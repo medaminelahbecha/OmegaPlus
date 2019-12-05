@@ -1,0 +1,33 @@
+
+    <h1>votre recu</h1>
+
+    <table style="size:45px">
+        <tbody style="background-color: #500a6f">
+            <tr>
+                <th>Id de l'emprunt</th>
+                <td>{{ emprunt.idem }}</td>
+            </tr>
+            <tr>
+                <th>Date de debut</th>
+                <td>{% if emprunt.dateDebut %}{{ emprunt.dateDebut|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Date de fin</th>
+                <td>{% if emprunt.dateFin %}{{ emprunt.dateFin|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>utilisateur</th>
+                <td>{{ emprunt.FosUser }}</td>
+            </tr>
+            <tr>
+                <th>livre</th>
+                <td>{{ emprunt.Livres }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+
+
+

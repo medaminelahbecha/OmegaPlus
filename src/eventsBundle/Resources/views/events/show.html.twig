@@ -1,0 +1,48 @@
+{% extends 'index3.html.twig' %}
+
+{% block events %}
+    <h1>Event</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idevent</th>
+                <td>{{ event.idEvent }}</td>
+            </tr>
+            <tr>
+                <th>Nomevent</th>
+                <td>{{ event.nomEvent }}</td>
+            </tr>
+            <tr>
+                <th>Localisationevent</th>
+                <td>{{ event.localisationEvent }}</td>
+            </tr>
+            <tr>
+                <th>Prixevent</th>
+                <td>{{ event.prixEvent }}</td>
+            </tr>
+            <tr>
+                <th>Dateevent</th>
+                <td>{% if event.dateEvent %}{{ event.dateEvent|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Placedispo</th>
+                <td>{{ event.placeDispo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('events_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('events_edit', { 'idEvent': event.idEvent }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

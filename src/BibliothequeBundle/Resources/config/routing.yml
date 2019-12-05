@@ -1,0 +1,49 @@
+bibliotheque_livres:
+    resource: "@BibliothequeBundle/Resources/config/routing/emprunts.yml"
+    prefix:   /emprunts
+
+bibliotheque_homepage:
+    path:     /b
+    defaults: { _controller: BibliothequeBundle:Default:index }
+bib:
+    path:     /bib
+    defaults: { _controller: BibliothequeBundle:Livres:index }
+emprunts_index:
+    path:     /
+    defaults: { _controller: "BibliothequeBundle:emprunts:index" }
+    methods:  GET
+
+emprunts_show:
+    path:     /{idem}/show
+    defaults: { _controller: "BibliothequeBundle:emprunts:show" }
+    methods:  GET
+
+emprunts_new:
+    path:     /new
+    defaults: { _controller: "BibliothequeBundle:emprunts:new" }
+    methods:  [GET, POST]
+
+emprunts_edit:
+    path:     /{idem}/edit
+    defaults: { _controller: "BibliothequeBundle:emprunts:edit" }
+    methods:  [GET, POST]
+
+emprunts_delete:
+    path:     /{idem}/delete
+    defaults: { _controller: "BibliothequeBundle:emprunts:delete" }
+    methods:  DELETE
+
+livres_index:
+    path:     /l
+    defaults: { _controller: "BibliothequeBundle:Livres:index" }
+    methods:  GET
+
+livres_show:
+    path:     /{idLivre}/lshow
+    defaults: { _controller: "BibliothequeBundle:Livres:show" }
+    methods:  GET
+
+pdf:
+    path:     /{idem}/pdf
+    defaults: { _controller: "BibliothequeBundle:emprunts:pdf" }
+    methods:  GET

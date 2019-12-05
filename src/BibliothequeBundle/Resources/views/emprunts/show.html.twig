@@ -1,0 +1,36 @@
+{% extends 'index3.html.twig' %}
+
+{% block events %}
+    <h1>Emprunt</h1>
+
+    <table class="table table-bordered table-striped" cellspacing="0" id="tableac" border="2">        <tbody>
+            <tr>
+                <th>Idem</th>
+                <td>{{ emprunt.idem }}</td>
+            </tr>
+            <tr>
+                <th>Datedebut</th>
+                <td>{% if emprunt.dateDebut %}{{ emprunt.dateDebut|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Datefin</th>
+                <td>{% if emprunt.dateFin %}{{ emprunt.dateFin|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>user</th>
+                <td>{{ emprunt.FosUser }}</td>
+            </tr>
+            <tr>
+                <th>livre</th>
+                <td>{{ emprunt.Livres }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+            <a class="btn btn-dark" href="{{ path('livres_index') }}">Back to the list</a>
+            <a class="btn btn-dark" href="{{ path('emprunts_index') }}">My list of emprunts</a>
+            <a class="btn btn-dark" href="{{ path('emprunts_edit', { 'idem': emprunt.idem }) }}">Edit</a>
+
+
+{% endblock %}

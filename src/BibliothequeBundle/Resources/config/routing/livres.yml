@@ -1,0 +1,10 @@
+livres_index:
+    path:     /l
+    defaults: { _controller: "BibliothequeBundle:Livres:index" }
+    methods:  GET
+
+livres_show:
+    path:     /{idLivre}/lshow
+    defaults: { _controller: "BibliothequeBundle:Livres:show" }
+    methods:  GET
+

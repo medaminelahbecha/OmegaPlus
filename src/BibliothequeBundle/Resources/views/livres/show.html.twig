@@ -1,0 +1,36 @@
+{% extends 'index3.html.twig' %}
+
+{% block events %}
+    <center>
+    <h1>{{ livre.nomLivre }}</h1>
+    </center>
+    <table class="table table-bordered table-striped" cellspacing="0" id="tableac" border="2">
+        <tbody>
+
+            <tr>
+                <th>Nomlivre</th>
+                <td>{{ livre.nomLivre }}</td>
+            </tr>
+            <tr>
+                <th>Auteurlivre</th>
+                <td>{{ livre.auteurLivre }}</td>
+            </tr>
+            <tr>
+                <th>Etatlivre</th>
+                <td>{{ livre.etatLivre }}</td>
+            </tr>
+            <tr>
+                <th>Domainelivre</th>
+                <td>{{ livre.domaineLivre }}</td>
+            </tr>
+            <tr>
+                <th>Nombreexemplaire</th>
+                <td>{{ livre.nombreexemplaire }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+            <a class="btn btn-dark"  href="{{ path('livres_index') }}">Back to the list</a>
+
+{% endblock %}
